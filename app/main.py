@@ -2,6 +2,7 @@ import psutil
 import platform
 import socket
 import docker
+import os
 from app import auth_helpers
 from datetime import datetime
 from fastapi import Depends, HTTPException, status, FastAPI, HTTPException
@@ -49,7 +50,7 @@ def root():
 @app.get("/system")
 def system_info(current_user=Depends(auth_helpers.authenticate_current_user("read:system"))):
     return {
-        "hostname": socket.gethostname(),
+        "hostname": os.getenv("HOST_HOSTNAME"),
         "platform": platform.platform(),
         "architecture": platform.machine(),
         "cpu_count": psutil.cpu_count(),

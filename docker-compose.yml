@@ -4,6 +4,8 @@ services:
     container_name: pi-metadata-api
     ports:
       - "8000:8000"
+    environment:
+      HOST_HOSTNAME: ${HOSTNAME:-LOCALHOST}
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - /:/host:ro
