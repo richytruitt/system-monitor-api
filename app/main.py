@@ -31,7 +31,7 @@ def login(form_data: OAuth2PasswordRequestForm = Depends()):
             "permissions": [
                 "read:system",
                 "read:docker",
-                "read: dockers"
+                "read:dockers"
             ]
         }
     )
