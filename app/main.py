@@ -14,6 +14,7 @@ app = FastAPI(title="Raspberry Pi Metadata API")
 
 app.add_middleware(
     CORSMiddleware,
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
