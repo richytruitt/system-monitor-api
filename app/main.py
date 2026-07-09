@@ -7,8 +7,18 @@ from app import auth_helpers
 from datetime import datetime
 from fastapi import Depends, HTTPException, status, FastAPI, HTTPException
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
+from fastapi.middleware.cors import CORSMiddleware
+
 
 app = FastAPI(title="Raspberry Pi Metadata API")
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 docker_client = docker.from_env()
 

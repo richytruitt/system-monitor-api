@@ -75,6 +75,10 @@ def authenticate_current_user(required_permission: str):
                 detail="Token has expired",
                 headers={"WWW-Authenticate": "Bearer"},
             )
+        except Exception as ex:
+            return {
+                "error": ex
+            }
 
 
     return validate_entitled
